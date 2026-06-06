@@ -23,15 +23,15 @@ jobs:
       run:
         working-directory: app          # the Vite project lives in app/
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: yarn
           cache-dependency-path: app/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: app/dist               # publish the build output
 
@@ -43,4 +43,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
