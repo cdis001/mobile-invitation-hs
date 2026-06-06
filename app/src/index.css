@@ -59,9 +59,22 @@ body {
 .scroll {
   position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
   -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+  /* one section per page — snap to each full-screen section */
+  scroll-snap-type: y mandatory;
 }
 .scroll::-webkit-scrollbar { width: 0; height: 0; }
 .scroll { scrollbar-width: none; }
+
+/* Each section fills the screen and snaps as a single page. Content is
+   vertically centered within its page. */
+.scroll > section {
+  min-height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .carousel-track { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .carousel-track::-webkit-scrollbar { width: 0; height: 0; }
