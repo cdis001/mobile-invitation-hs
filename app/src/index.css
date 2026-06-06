@@ -85,6 +85,46 @@ body {
   50%      { opacity: 0.9; transform: translateX(-50%) translateY(5px); }
 }
 
+/* ---- Closing: a round character bounces in and settles in the center ---- */
+.bouncer-stage { display: flex; justify-content: center; }
+.bouncer { opacity: 0; }
+.bouncer-stage.go .bouncer { animation: roll-in 2s var(--ease-soft) var(--bounce-delay, 0s) forwards; }
+.bouncer-stage.go .hopper  { animation: bounce-in 2.6s linear var(--bounce-delay, 0s) forwards; }
+.bouncer-stage.go .shadow  { animation: shadow-pulse 2.6s linear var(--bounce-delay, 0s) forwards; }
+.hopper { transform-box: fill-box; transform-origin: bottom center; }
+.shadow { transform-box: fill-box; transform-origin: center; }
+
+/* travel in horizontally while the body does the bouncing */
+@keyframes roll-in {
+  from { transform: translateX(-150px); opacity: 0; }
+  to   { transform: translateX(0);      opacity: 1; }
+}
+/* decreasing hops + squash/stretch, ending at a settled round rest */
+@keyframes bounce-in {
+  0%   { transform: translateY(0)     scale(1.12, 0.88); }
+  15%  { transform: translateY(-42px) scale(0.96, 1.04); }
+  30%  { transform: translateY(0)     scale(1.12, 0.88); }
+  48%  { transform: translateY(-26px) scale(0.98, 1.02); }
+  62%  { transform: translateY(0)     scale(1.10, 0.90); }
+  78%  { transform: translateY(-12px) scale(1, 1); }
+  90%  { transform: translateY(0)     scale(1.05, 0.95); }
+  96%  { transform: translateY(-4px); }
+  100% { transform: translateY(0)     scale(1, 1); }
+}
+/* shadow shrinks/fades as the character rises */
+@keyframes shadow-pulse {
+  0%, 30%, 62%, 90%, 100% { transform: scaleX(1);   opacity: 0.16; }
+  15% { transform: scaleX(0.66); opacity: 0.07; }
+  48% { transform: scaleX(0.80); opacity: 0.10; }
+  78% { transform: scaleX(0.92); opacity: 0.13; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bouncer { opacity: 1; }
+  .bouncer-stage.go .bouncer,
+  .bouncer-stage.go .hopper,
+  .bouncer-stage.go .shadow { animation: none; }
+}
+
 /* ---- Mobile: the app fills the screen (app-centered responsive) ---- */
 @media (max-width: 599px) {
   .page { padding: 0; gap: 0; min-height: 100dvh; }
