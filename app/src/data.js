@@ -3,12 +3,17 @@
 // These are just the invitation's content/config; edit them here.
 // Song's Mobile Wedding Invitation · 결혼 안내장 (예식 없음 / 혼인신고)
 
+// Prefix a path to a file in public/. On GitHub Pages the site is served under
+// /<repo>/, so public assets must be addressed relative to the Vite base
+// (import.meta.env.BASE_URL) — not the domain root. In dev BASE_URL is '/'.
+export const asset = (p) => import.meta.env.BASE_URL + p
+
 // ---- Floral asset paths (served from public/florals) -----------------------
 // Petrol uses gold lineart only: two corner sprays + a sprig divider.
 export const F = {
-  sprigBottom: '/florals/florals-line-sprig-bottom.png',
-  cornerTR:    '/florals/florals-corner-tr.png',
-  cornerBL:    '/florals/florals-corner-bl.png',
+  sprigBottom: asset('florals/florals-line-sprig-bottom.png'),
+  cornerTR:    asset('florals/florals-corner-tr.png'),
+  cornerBL:    asset('florals/florals-corner-bl.png'),
 }
 
 // ---- Colorway — Petrol only (deep teal + gold lineart florals) -------------
