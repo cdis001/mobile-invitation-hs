@@ -26,10 +26,9 @@ export default function Cover({ th, t }) {
         <div style={{ marginTop: 18, marginBottom: 16 }}><Ornament theme={th} w={58} /></div>
 
         {/* script monogram */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 40 }}>
           <span style={{ fontFamily: SCRIPT, fontSize: 112 * t.fontScale, lineHeight: 0.8,
             color: th.script }}>{t.iniA}</span>
-          <span style={{ width: 1, height: 84, background: th.rule, opacity: 0.7 }} />
           <span style={{ fontFamily: SCRIPT, fontSize: 112 * t.fontScale, lineHeight: 0.8,
             color: th.script }}>{t.iniB}</span>
         </div>
@@ -42,15 +41,6 @@ export default function Cover({ th, t }) {
           <span style={{ fontFamily: SCRIPT, fontSize: 32 * t.fontScale, color: th.names,
             transform: 'translateY(2px)', flex: '0 0 auto' }}>&amp;</span>
           <span style={{ whiteSpace: 'nowrap', flex: '0 0 auto' }}>{t.bride}</span>
-        </div>
-
-        {/* date between hairlines */}
-        <div style={{ marginTop: 30, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <span style={{ width: 150, height: 1, background: th.ruleHair }} />
-          <span style={{ fontFamily: SANS, fontWeight: 500, fontSize: 20 * t.fontScale,
-            letterSpacing: (0.14 + t.spacing) + 'em', color: th.ink, padding: '13px 0' }}>
-            {t.date}</span>
-          <span style={{ width: 150, height: 1, background: th.ruleHair }} />
         </div>
 
         <div style={{ marginTop: 22, fontFamily: KRSERIF, fontSize: 13 * t.fontScale,

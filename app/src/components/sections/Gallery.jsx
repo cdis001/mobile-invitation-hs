@@ -6,16 +6,11 @@
 import React from 'react'
 import { Ornament } from '../Florals.jsx'
 import Photo from '../Photo.jsx'
+import { PHOTOS } from '../../data.js'
 import { Eyebrow, SANS, KRSANS } from './shared.jsx'
 
-// Drop photos into public/pic with these names to fill the gallery.
-const SLIDES = [
-  { src: '/pic/gallery-1.png', ph: '대표 사진' },
-  { src: '/pic/gallery-2.png', ph: '사진 2' },
-  { src: '/pic/gallery-3.png', ph: '사진 3' },
-  { src: '/pic/gallery-4.png', ph: '사진 4' },
-  { src: '/pic/gallery-5.png', ph: '사진 5' },
-]
+// Gallery photo URLs are managed in data.js (PHOTOS.gallery).
+const SLIDES = PHOTOS.gallery
 
 export default function Gallery({ th, t }) {
   const trackRef = React.useRef(null)
@@ -77,8 +72,9 @@ export default function Gallery({ th, t }) {
         {SLIDES.map((s, i) => (
           <div key={i} style={{ flex: '0 0 100%', scrollSnapAlign: 'center',
             padding: 2, boxSizing: 'border-box' }}>
-            <Photo src={s.src} shape="rounded" radius={14} placeholder={s.ph}
-              style={{ width: '100%', height: 300, display: 'block' }} />
+            <Photo src={s.src} shape="rounded" radius={14} placeholder={s.label}
+              style={{ width: '100%', height: 300, display: 'block', marginBottom: 8 }} />
+            <span>{s.label}</span>
           </div>
         ))}
       </div>

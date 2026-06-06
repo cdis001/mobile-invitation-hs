@@ -56,8 +56,8 @@ export const INVITATION = {
 
 축하해 주시는 따뜻한 마음,
 오래도록 잊지 않고 살겠습니다.`,
-  groomLine: '언제나 한결같은,  든든한 사람',
-  brideLine: '늘 곁에서  웃게 해주는 사람',
+  groomLine: '제주도 산지직송, 귤수저',
+  brideLine: '마음의 고향이 강원도인, 감자송',
 
   // — presentation knobs (fixed config) —
   floralAmount: 'normal',   // 'subtle' | 'normal' | 'lush'
@@ -65,4 +65,39 @@ export const INVITATION = {
   spacing:      0,          // -0.02 – 0.08 (em)
 }
 
-export const DEFAULT_COLORWAY = 'petrol'
+// ---- Photos (Cloudinary-hosted) --------------------------------------------
+// Photos are NOT committed to git — they live on Cloudinary and are referenced
+// by URL here. Setup:
+//   1) Make a free Cloudinary account, copy your "Cloud name" from the
+//      dashboard, and set CLOUDINARY_CLOUD_NAME below.
+//   2) Upload each photo and give it the matching public ID (the asset's name
+//      in Cloudinary): 'gallery-1' … 'gallery-5'.
+//   3) Done — the URLs below resolve automatically. To swap a photo, re-upload
+//      with the same public ID, or change the ID here.
+// While CLOUDINARY_CLOUD_NAME is empty, every photo gracefully shows a
+// placeholder (no broken requests).
+const CLOUDINARY_CLOUD_NAME = 'dpgjkgir2' // e.g. 'dxxxxxxxx'
+
+// Build a Cloudinary delivery URL. `f_auto,q_auto` auto-picks webp/avif and a
+// sensible quality, so you never ship oversized originals.
+export function cld(publicId, transforms = 'f_auto,q_auto') {
+  if (!CLOUDINARY_CLOUD_NAME) return '' // not configured → Photo shows placeholder
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/${transforms}/${publicId}`
+}
+
+// Width-capped delivery for gallery slides; CSS object-fit: cover does the
+// final framing inside the 300px-tall cell.
+const GALLERY = 'v1780752726'
+
+// Gallery photos — edit public IDs / add items here. (Couple 신랑·신부 사진은
+// 로컬 public/pic/ 이미지를 직접 사용합니다.)
+export const PHOTOS = {
+  gallery: [
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_004_a9aww0.jpg', GALLERY), label: '행복한 우리🩵' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_003_ctltgq.jpg', GALLERY), label: '전투적인 멋진 송👊' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_005_ciio8i.jpg', GALLERY), label: '복스러운 하관💰' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_006_tinsu9.jpg', GALLERY), label: '나는야 롹스타🎸' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_007_y0q9zf.jpg', GALLERY), label: '술 먹고 뻗어버린 송😵‍💫' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_001_gpvua0.jpg', GALLERY), label: '살찜🐷' },
+  ],
+}

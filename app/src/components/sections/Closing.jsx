@@ -12,16 +12,13 @@ export default function Closing({ th, t }) {
       <CoverFlorals amount="subtle" />
       <div style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ fontFamily: KRSERIF, fontSize: 21 * t.fontScale, color: th.ink,
-          letterSpacing: (0.06 + t.spacing) + 'em', lineHeight: 1.7 }}>
+          letterSpacing: (0.06 + t.spacing) + 'em', lineHeight: 1.7, marginBottom: 45 }}>
           함께라서,<br />행복합니다
         </div>
-        <div style={{ margin: '30px 0 26px' }}><LeafDivider theme={th} w={120} /></div>
         <div style={{ fontFamily: SCRIPT, fontSize: 64 * t.fontScale, color: th.script,
           lineHeight: 0.9 }}>{t.iniA} &amp; {t.iniB}</div>
-        <div style={{ marginTop: 16, fontFamily: SANS, fontSize: 13 * t.fontScale,
-          letterSpacing: (0.18 + t.spacing) + 'em', color: th.ink }}>{t.date}</div>
         <div style={{ marginTop: 46, fontFamily: SANS, fontSize: 9, letterSpacing: '0.34em',
-          color: th.muted, textIndent: '0.34em' }}>SONG&apos;S · MOBILE INVITATION</div>
+          color: th.muted, textIndent: '0.34em' }}>MOBILE INVITATION</div>
       </div>
     </section>
   )
