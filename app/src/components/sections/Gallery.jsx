@@ -5,15 +5,16 @@
 
 import React from 'react'
 import { Ornament } from '../Florals.jsx'
-import ImageSlot from '../ImageSlot.jsx'
+import Photo from '../Photo.jsx'
 import { Eyebrow, SANS, KRSANS } from './shared.jsx'
 
+// Drop photos into public/pic with these names to fill the gallery.
 const SLIDES = [
-  { id: 'gallery-1', ph: '대표 사진' },
-  { id: 'gallery-2', ph: '사진 2' },
-  { id: 'gallery-3', ph: '사진 3' },
-  { id: 'gallery-4', ph: '사진 4' },
-  { id: 'gallery-5', ph: '사진 5' },
+  { src: '/pic/gallery-1.png', ph: '대표 사진' },
+  { src: '/pic/gallery-2.png', ph: '사진 2' },
+  { src: '/pic/gallery-3.png', ph: '사진 3' },
+  { src: '/pic/gallery-4.png', ph: '사진 4' },
+  { src: '/pic/gallery-5.png', ph: '사진 5' },
 ]
 
 export default function Gallery({ th, t }) {
@@ -73,10 +74,10 @@ export default function Gallery({ th, t }) {
         display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory',
         borderRadius: 16, gap: 0,
       }}>
-        {SLIDES.map((s) => (
-          <div key={s.id} style={{ flex: '0 0 100%', scrollSnapAlign: 'center',
+        {SLIDES.map((s, i) => (
+          <div key={i} style={{ flex: '0 0 100%', scrollSnapAlign: 'center',
             padding: 2, boxSizing: 'border-box' }}>
-            <ImageSlot id={s.id} shape="rounded" radius={14} placeholder={s.ph}
+            <Photo src={s.src} shape="rounded" radius={14} placeholder={s.ph}
               style={{ width: '100%', height: 300, display: 'block' }} />
           </div>
         ))}
@@ -95,7 +96,7 @@ export default function Gallery({ th, t }) {
           </div>
           <div style={{ display: 'flex', gap: 7 }}>
             {SLIDES.map((s, i) => (
-              <button key={s.id} onClick={() => go(i)} aria-label={(i + 1) + '번 사진'}
+              <button key={i} onClick={() => go(i)} aria-label={(i + 1) + '번 사진'}
                 style={{ width: i === idx ? 18 : 7, height: 7, borderRadius: 999, border: 0,
                   cursor: 'pointer', padding: 0, background: i === idx ? th.accent : th.ruleHair,
                   transition: 'width .3s var(--ease-soft), background .3s var(--ease-soft)' }} />
@@ -107,7 +108,7 @@ export default function Gallery({ th, t }) {
 
       <div style={{ marginTop: 18, fontFamily: KRSANS, fontSize: 11 * t.fontScale,
         color: th.muted, letterSpacing: (0.18 + t.spacing) + 'em' }}>
-        넘겨보세요 · 끌어다 놓아 채우고, 더블클릭으로 위치 조정
+        좌우로 넘겨보세요
       </div>
     </section>
   )

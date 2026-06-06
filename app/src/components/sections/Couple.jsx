@@ -2,12 +2,12 @@
 // circular photo slot.
 
 import { CornerSpray, Ornament } from '../Florals.jsx'
-import ImageSlot from '../ImageSlot.jsx'
+import Photo from '../Photo.jsx'
 import { Eyebrow, SCRIPT, KRSERIF, KRSANS } from './shared.jsx'
 
-function Person({ th, t, slotId, role, name, line, flip }) {
+function Person({ th, t, role, name, line, flip, src }) {
   const portrait = (
-    <ImageSlot id={slotId} shape="circle" placeholder={role + ' 사진'}
+    <Photo shape="circle" placeholder={role + ' 사진'} src={src}
       style={{ width: 108, height: 108, flex: '0 0 auto',
         boxShadow: '0 6px 18px -10px rgba(43,37,33,.4)' }} />
   )
@@ -41,12 +41,12 @@ export default function Couple({ th, t }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 26, marginTop: 34,
         position: 'relative', zIndex: 2 }}>
-        <Person th={th} t={t} slotId="couple-groom" role="신랑" name={t.groom}
-          line={t.groomLine} flip={false} />
+        <Person th={th} t={t} role="신랑" name={t.groom}
+          line={t.groomLine} flip={false} src="/pic/groom.png" />
         <div style={{ fontFamily: SCRIPT, fontSize: 40 * t.fontScale, color: th.names,
           lineHeight: 0.6 }}>&amp;</div>
-        <Person th={th} t={t} slotId="couple-bride" role="신부" name={t.bride}
-          line={t.brideLine} flip={true} />
+        <Person th={th} t={t} role="신부" name={t.bride}
+          line={t.brideLine} flip={true} src="/pic/bride.png" />
       </div>
     </section>
   )

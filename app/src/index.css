@@ -79,10 +79,6 @@ body {
 .carousel-track { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .carousel-track::-webkit-scrollbar { width: 0; height: 0; }
 
-/* image-slot hover controls (replace / remove) */
-.slot-ctl { opacity: 0; pointer-events: none; transition: opacity .12s var(--ease-soft); }
-*:hover > .slot-ctl { opacity: 1; pointer-events: auto; }
-
 .scroll-cue { animation: cue 2.6s var(--ease-soft) infinite; }
 @keyframes cue {
   0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
