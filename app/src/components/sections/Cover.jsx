@@ -5,7 +5,6 @@ import { CoverFlorals, Ornament } from '../Florals.jsx'
 import { Eyebrow, SCRIPT, SANS, KRSERIF } from './shared.jsx'
 
 export default function Cover({ th, t }) {
-  const floral = t.floralStyle === 'auto' ? th.floral : t.floralStyle
   return (
     <section data-screen-label="Cover" style={{
       position: 'relative', minHeight: '100%', display: 'flex',
@@ -13,7 +12,7 @@ export default function Cover({ th, t }) {
       textAlign: 'center', padding: '72px 30px 56px', boxSizing: 'border-box',
       overflow: 'hidden',
     }}>
-      <CoverFlorals theme={th} style={floral} amount={t.floralAmount} />
+      <CoverFlorals amount={t.floralAmount} />
 
       {/* soft pill-arch stage behind the monogram */}
       <div style={{ position: 'absolute', top: '50%', left: '50%',

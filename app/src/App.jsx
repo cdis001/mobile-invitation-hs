@@ -1,10 +1,8 @@
-// App — assembles the 안내장: responsive device shell, colorway switcher,
-// and the scrolling sections. Content/config comes from data.js (INVITATION);
-// the only live state is the selected colorway.
+// App — assembles the 안내장: responsive device shell + the scrolling sections.
+// Content/config comes from data.js (INVITATION); the colorway is fixed to
+// Petrol (deep teal + gold lineart).
 
-import { useState } from 'react'
-import { THEMES, INVITATION, DEFAULT_COLORWAY } from './data.js'
-import ColorwaySwitcher from './components/ColorwaySwitcher.jsx'
+import { THEMES, INVITATION } from './data.js'
 import Cover from './components/sections/Cover.jsx'
 import Greeting from './components/sections/Greeting.jsx'
 import Couple from './components/sections/Couple.jsx'
@@ -12,8 +10,7 @@ import Gallery from './components/sections/Gallery.jsx'
 import Closing from './components/sections/Closing.jsx'
 
 export default function App() {
-  const [colorway, setColorway] = useState(DEFAULT_COLORWAY)
-  const th = THEMES[colorway] || THEMES.ivory
+  const th = THEMES.petrol
   const t = INVITATION   // content + presentation config (fixed)
 
   return (
@@ -22,7 +19,6 @@ export default function App() {
         <div className="brand" style={{ color: th.names }}>
           Song&rsquo;s<small>MOBILE&nbsp;&nbsp;INVITATION</small>
         </div>
-        <ColorwaySwitcher value={colorway} onChange={setColorway} />
       </header>
 
       <div className="device">

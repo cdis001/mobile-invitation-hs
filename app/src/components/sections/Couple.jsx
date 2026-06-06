@@ -30,13 +30,12 @@ function Person({ th, t, slotId, role, name, line, flip }) {
 }
 
 export default function Couple({ th, t }) {
-  const floral = t.floralStyle === 'auto' ? th.floral : t.floralStyle
   return (
     <section data-screen-label="두 사람" style={{
       position: 'relative', background: th.bg, padding: '78px 32px 84px',
       textAlign: 'center', overflow: 'hidden',
     }}>
-      <CornerSpray theme={th} style={floral} amount={t.floralAmount} corner="tr" />
+      <CornerSpray amount={t.floralAmount} corner="tr" />
       <Eyebrow th={th} t={t}>두 사람</Eyebrow>
       <div style={{ margin: '22px 0 4px' }}><Ornament theme={th} w={58} /></div>
 

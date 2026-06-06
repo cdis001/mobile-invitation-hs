@@ -26,9 +26,8 @@ app/
    ├─ main.jsx             React 진입점
    ├─ index.css            디바이스 셸 · 반응형 · 모션 (+ tokens.css import)
    ├─ tokens.css           디자인 토큰 (colors_and_type.css 원본)
-   ├─ data.js              ★ 데이터 모델: 테마 3종 · 콘텐츠 · 프레젠테이션 설정
+   ├─ data.js              ★ 데이터 모델: Petrol 테마 · 콘텐츠 · 프레젠테이션 설정
    └─ components/
-      ├─ ColorwaySwitcher.jsx
       ├─ Florals.jsx       Ornament · LeafDivider · CoverFlorals · CornerSpray
       ├─ ImageSlot.jsx     드래그드롭 사진 슬롯 (localStorage 영속화)
       └─ sections/
@@ -39,8 +38,8 @@ app/
 ## 내용 수정
 
 문구·이름·날짜는 모두 **`src/data.js`의 `INVITATION` 객체**에서 바꿉니다.
-컬러웨이(Ivory / Petrol / Sage)는 상단 스위처로 실시간 전환되며, 기본값은
-`DEFAULT_COLORWAY`로 지정합니다.
+컬러웨이는 **Petrol**(딥 틸 + 골드 라인 플로럴) 한 가지로 고정되어 있습니다
+(`THEMES.petrol` / `DEFAULT_COLORWAY`).
 
 ## 프로토타입과의 차이
 
@@ -49,7 +48,9 @@ app/
 
 - **Tweaks 패널 제거** — 라이브 편집 패널은 프로토타입 전용이었음. 문구/프레젠테이션
   값(`fontScale`, `spacing`, `floralStyle`, `floralAmount`)을 `data.js`의 고정
-  설정으로 전환. (컬러웨이 스위처는 실제 기능이라 유지)
+  설정으로 전환.
+- **컬러웨이 Petrol 고정** — 원본은 Ivory · Petrol · Sage 3종을 스위처로 전환했으나,
+  Petrol 한 가지만 남기고 나머지 테마와 스위처 UI를 제거.
 - **`<image-slot>` 웹컴포넌트 → React `ImageSlot`** — 드래그드롭 + 클릭 업로드 +
   WebP 다운스케일 + `localStorage` 영속화. **reframe**(채운 사진을 더블클릭 →
   드래그로 위치, 모서리/휠로 크기 조정, Esc·바깥클릭으로 완료)도 포팅했고, 크롭은

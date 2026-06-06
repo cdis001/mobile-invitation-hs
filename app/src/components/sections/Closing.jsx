@@ -4,13 +4,12 @@ import { CoverFlorals, LeafDivider } from '../Florals.jsx'
 import { SCRIPT, SANS, KRSERIF } from './shared.jsx'
 
 export default function Closing({ th, t }) {
-  const floral = t.floralStyle === 'auto' ? th.floral : t.floralStyle
   return (
     <section data-screen-label="Closing" style={{
       position: 'relative', background: th.bg, padding: '80px 32px 64px',
       textAlign: 'center', overflow: 'hidden',
     }}>
-      <CoverFlorals theme={th} style={floral} amount="subtle" />
+      <CoverFlorals amount="subtle" />
       <div style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ fontFamily: KRSERIF, fontSize: 21 * t.fontScale, color: th.ink,
           letterSpacing: (0.06 + t.spacing) + 'em', lineHeight: 1.7 }}>
