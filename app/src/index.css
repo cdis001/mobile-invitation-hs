@@ -1,0 +1,96 @@
+/* index.css — device shell, responsive behavior, and motion.
+   The invitation content itself is styled with theme-driven inline styles in
+   the section components; this file owns only the device shell / frame CSS
+   around the invitation. */
+
+@import './tokens.css';
+
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: 'Gowun Dodum', var(--font-sans);
+  background: radial-gradient(125% 95% at 50% 0%, #fbf7ef 0%, #f1ebe0 58%, #e8e0d3 100%);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+* { box-sizing: border-box; }
+
+.page {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 22px 16px 40px; gap: 16px;
+}
+
+.topbar { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.brand {
+  font-family: 'Pinyon Script', cursive; font-size: 32px; line-height: 1; text-align: center;
+}
+.brand small {
+  display: block; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.3em; text-indent: 0.3em; color: #a99c86; margin-top: 6px;
+}
+.switcher {
+  display: flex; gap: 5px; background: rgba(255,255,255,0.82); padding: 5px;
+  border-radius: 999px; box-shadow: 0 8px 28px -10px rgba(43,37,33,0.3);
+  -webkit-backdrop-filter: blur(10px) saturate(150%); backdrop-filter: blur(10px) saturate(150%);
+}
+.sw-chip {
+  border: 0; cursor: pointer; padding: 8px 17px; border-radius: 999px;
+  font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; background: transparent;
+  transition: background 0.3s var(--ease-soft), color 0.3s var(--ease-soft);
+}
+
+.device {
+  width: 404px; height: min(884px, calc(100vh - 132px));
+  background: var(--bezel, #E7E2DA); border-radius: 52px; padding: 13px;
+  box-shadow: var(--shadow-device); flex: 0 0 auto;
+  transition: background 0.45s var(--ease-soft);
+}
+.screen {
+  position: relative; width: 100%; height: 100%; border-radius: 40px; overflow: hidden;
+  transition: background 0.45s var(--ease-soft), color 0.45s var(--ease-soft);
+}
+.notch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 146px; height: 26px; background: #15110e;
+  border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; z-index: 50;
+}
+.scroll {
+  position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+}
+.scroll::-webkit-scrollbar { width: 0; height: 0; }
+.scroll { scrollbar-width: none; }
+
+.carousel-track { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.carousel-track::-webkit-scrollbar { width: 0; height: 0; }
+
+/* image-slot hover controls (replace / remove) */
+.slot-ctl { opacity: 0; pointer-events: none; transition: opacity .12s var(--ease-soft); }
+*:hover > .slot-ctl { opacity: 1; pointer-events: auto; }
+
+.scroll-cue { animation: cue 2.6s var(--ease-soft) infinite; }
+@keyframes cue {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  50%      { opacity: 0.9; transform: translateX(-50%) translateY(5px); }
+}
+
+/* ---- Mobile: the app fills the screen (app-centered responsive) ---- */
+@media (max-width: 599px) {
+  .page { padding: 0; gap: 0; min-height: 100dvh; }
+  .device {
+    width: 100vw; height: 100vh; height: 100dvh;
+    border-radius: 0; padding: 0; box-shadow: none;
+  }
+  .screen { border-radius: 0; }
+  .notch { display: none; }
+  .topbar {
+    position: fixed; top: 12px; left: 0; right: 0; z-index: 200;
+    flex-direction: row; justify-content: center; pointer-events: none;
+  }
+  .brand { display: none; }
+  .switcher { pointer-events: auto; box-shadow: 0 10px 30px -8px rgba(43,37,33,0.4); }
+  /* keep section eyebrows clear of the floating switcher at rest */
+  .scroll > section { padding-top: 92px !important; }
+}

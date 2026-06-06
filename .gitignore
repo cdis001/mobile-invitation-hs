@@ -1,0 +1,9 @@
+# dependencies / build output
+node_modules/
+dist/
+.vite/
+
+# editor / OS
+.DS_Store
+.idea/
+*.local

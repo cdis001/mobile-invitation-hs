@@ -1,0 +1,192 @@
+/* ============================================================
+   Song's Mobile Wedding Invitation — Color & Type Foundations
+   ------------------------------------------------------------
+   Derived from three signature invitation templates:
+     A · Sunflower Botanical  (warm — gold + sage, filled florals)
+     B · Elegant Line Frame   (cool — petrol + gold lineart)
+     C · Line Arch            (cool — petrol + blush, gold lineart)
+   The tan-gold (--gold) is the connective thread across all three:
+   dividers, monogram strokes, and line florals all use it.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,400&family=Poppins:wght@300;400;500;600;700&family=Pinyon+Script&display=swap');
+
+:root {
+  /* ---------- INK / TEXT ---------- */
+  --ink:        #2B2521;  /* warm near-black — Theme A body text     */
+  --petrol:     #103B47;  /* deep teal       — Theme B/C primary ink */
+  --petrol-700: #1A4F5E;  /* lighter teal for hover                  */
+
+  /* ---------- SIGNATURE GOLD (shared) ---------- */
+  --gold:       #C29A63;  /* tan-gold — dividers, monogram, lineart  */
+  --gold-soft:  #CDB089;  /* muted gold — script names, hairlines    */
+  --gold-deep:  #A87E45;  /* pressed / darker gold                   */
+
+  /* ---------- WARM PALETTE (Theme A · Sunflower) ---------- */
+  --sunflower:  #F0C63E;  /* bright daisy yellow   */
+  --marigold:   #E1A52A;  /* golden bloom          */
+  --amber:      #C9821E;  /* deep amber bloom      */
+  --sage:       #5C7B3A;  /* leaf green            */
+  --olive:      #7E8C3E;  /* olive / oak           */
+  --maroon:     #5C2233;  /* flower centers, dots  */
+
+  /* ---------- SURFACES ---------- */
+  --cream-50:   #FBF6E6;  /* lightest cream — Theme A screen      */
+  --cream-100:  #F7EFD3;  /* warm cream                            */
+  --gold-bg:    #D4B068;  /* mustard mat — Theme A outer frame     */
+  --blush-50:   #FBF2EB;  /* lightest blush — Theme C arch         */
+  --blush-100:  #F7E2D0;  /* blush screen   — Theme C              */
+  --linen:      #F8EEE6;  /* warm linen mat — Theme B outer        */
+  --white:      #FFFFFF;  /* Theme B screen                        */
+
+  /* ---------- LINES & RULES ---------- */
+  --rule:       var(--gold);
+  --rule-hair:  rgba(194,154,99,0.55);
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-sans:    'Montserrat', system-ui, sans-serif; /* canonical labels/dates */
+  --font-sans-alt:'Poppins', system-ui, sans-serif;    /* Theme B/C alternate    */
+  --font-script:  'Pinyon Script', cursive;            /* monograms + names      */
+
+  /* ---------- TYPE SCALE (mobile invitation @ 390px) ---------- */
+  --fs-monogram: 132px;  /* single-letter script initials */
+  --fs-display:  56px;   /* couple names in script        */
+  --fs-date:     34px;   /* the big date                  */
+  --fs-venue:    22px;   /* venue / church                */
+  --fs-eyebrow:  15px;   /* WE INVITE YOU label           */
+  --fs-label:    14px;   /* SUNDAY / 6:00PM meta          */
+  --fs-body:     15px;   /* address, supporting copy      */
+
+  /* ---------- TRACKING ---------- */
+  --track-eyebrow: 0.22em;  /* generous on uppercase labels  */
+  --track-label:   0.28em;  /* widest — SUNDAY, RSVP         */
+  --track-date:    0.06em;
+  --track-venue:   0.10em;
+
+  /* ---------- RADII ---------- */
+  --r-frame:   40px;   /* phone screen corner            */
+  --r-arch:    180px;  /* Theme C arch (pill)            */
+  --r-card:    18px;
+  --r-button:  999px;  /* pill CTAs                      */
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-device: 0 24px 60px -18px rgba(43,37,33,0.35);
+  --shadow-card:   0 10px 30px -12px rgba(43,37,33,0.20);
+  --shadow-press:  0 2px 8px -4px rgba(43,37,33,0.30);
+
+  /* ---------- MOTION ---------- */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1); /* gentle settle */
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 560ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+.t-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.t-monogram {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: var(--fs-monogram);
+  line-height: 0.9;
+}
+.t-display {       /* couple names, script */
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: var(--fs-display);
+  line-height: 1.0;
+}
+.t-date {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--fs-date);
+  letter-spacing: var(--track-date);
+}
+.t-venue {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-venue);
+  letter-spacing: var(--track-venue);
+  text-transform: uppercase;
+}
+.t-label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+.t-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   PRIMITIVES
+   ============================================================ */
+
+/* The signature double rule with end dots (Theme A) */
+.rule-double {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.rule-double::before,
+.rule-double::after {
+  content: "";
+  height: 2px;
+  background: var(--rule);
+  border-radius: 2px;
+}
+
+/* Single hairline rule flanking meta (Theme B/C) */
+.rule-hair {
+  height: 1px;
+  background: var(--rule-hair);
+  border: 0;
+}
+
+/* Pill button */
+.btn-pill {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--r-button);
+  border: 1.5px solid var(--petrol);
+  background: var(--petrol);
+  color: var(--white);
+  cursor: pointer;
+  transition: background var(--dur-base) var(--ease-soft),
+              transform var(--dur-fast) var(--ease-soft);
+}
+.btn-pill:hover  { background: var(--petrol-700); }
+.btn-pill:active { transform: scale(0.97); }
+
+.btn-pill--ghost {
+  background: transparent;
+  color: var(--petrol);
+}
+.btn-pill--ghost:hover { background: rgba(16,59,71,0.06); }
+
+.btn-pill--gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+}
+.btn-pill--gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
