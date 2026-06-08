@@ -27,9 +27,9 @@ export default function Closing({ th, t }) {
         <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center',
           alignItems: 'flex-end' }}>
           <BouncingCharacter th={th} width={104} ball="#F2913D" outline="#D9772A"
-            playKey={playKey} onReplay={replay} />
+            role="hittee" playKey={playKey} onReplay={replay} />
           <BouncingCharacter th={th} width={104} delay={0.14} ball="#F0DCAAFF"
-            style={{ marginLeft: -46 }} playKey={playKey} onReplay={replay} />
+            role="hitter" style={{ marginLeft: -46 }} playKey={playKey} onReplay={replay} />
         </div>
 
         <div style={{ marginTop: 28, fontFamily: SANS, fontSize: 9, letterSpacing: '0.34em',

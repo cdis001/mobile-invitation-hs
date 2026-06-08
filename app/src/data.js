@@ -98,11 +98,6 @@ const GALLERY = 'v1780752726'
 // 로컬 public/pic/ 이미지를 직접 사용합니다.)
 export const PHOTOS = {
   gallery: [
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_004_a9aww0.jpg', GALLERY), label: '행복한 우리🩵' },
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_003_ctltgq.jpg', GALLERY), label: '전투적인 멋진 송👊' },
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_005_ciio8i.jpg', GALLERY), label: '복스러운 하관💰' },
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_006_tinsu9.jpg', GALLERY), label: '나는야 롹스타🎸' },
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_007_y0q9zf.jpg', GALLERY), label: '술 먹고 뻗어버린 송😵‍💫' },
-    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_001_gpvua0.jpg', GALLERY), label: '살찜🐷' },
+    { src: cld('KakaoTalk_Photo_2026-06-06-22-31-53_004_a9aww0.jpg', GALLERY), label: '행복한 우리🩵' }
   ],
 }

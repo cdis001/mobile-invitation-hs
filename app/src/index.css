@@ -94,6 +94,13 @@ body {
 .hopper { transform-box: fill-box; transform-origin: bottom center; }
 .shadow { transform-box: fill-box; transform-origin: center; }
 
+/* hit gag (after the bounce settles): one character punches, the other recoils */
+.actor { display: inline-block; transform-origin: bottom center; }
+.impact { transform-box: fill-box; transform-origin: center; opacity: 0; }
+.bouncer-stage.go .actor.hitter { animation: hit-swing 0.55s var(--ease-soft) 2.9s both; }
+.bouncer-stage.go .actor.hittee { animation: hit-recoil 0.7s var(--ease-soft) 3.12s both; }
+.bouncer-stage.go .impact { animation: impact-flash 0.35s ease-out 3.16s both; }
+
 /* travel in horizontally while the body does the bouncing */
 @keyframes roll-in {
   from { transform: translateX(-150px); opacity: 0; }
@@ -118,11 +125,37 @@ body {
   48% { transform: scaleX(0.80); opacity: 0.10; }
   78% { transform: scaleX(0.92); opacity: 0.13; }
 }
+/* hitter winds up, then jabs toward the other character (to the left) */
+@keyframes hit-swing {
+  0%   { transform: translateX(0)     rotate(0); }
+  35%  { transform: translateX(7px)   rotate(11deg); }
+  55%  { transform: translateX(-22px) rotate(-17deg); }
+  72%  { transform: translateX(-13px) rotate(-7deg); }
+  100% { transform: translateX(0)     rotate(0); }
+}
+/* hittee gets knocked left, squashes, then wobbles back upright */
+@keyframes hit-recoil {
+  0%   { transform: translateX(0)    rotate(0)      scale(1, 1); }
+  12%  { transform: translateX(-15px) rotate(-13deg) scale(1.12, 0.9); }
+  32%  { transform: translateX(-5px)  rotate(8deg); }
+  50%  { transform: translateX(-9px)  rotate(-5deg); }
+  68%  { transform: translateX(-3px)  rotate(3deg); }
+  100% { transform: translateX(0)    rotate(0)      scale(1, 1); }
+}
+/* spark that flashes at the moment of impact */
+@keyframes impact-flash {
+  0%   { opacity: 0; transform: scale(0.4); }
+  40%  { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(0.7); }
+}
 @media (prefers-reduced-motion: reduce) {
   .bouncer { opacity: 1; }
   .bouncer-stage.go .bouncer,
   .bouncer-stage.go .hopper,
-  .bouncer-stage.go .shadow { animation: none; }
+  .bouncer-stage.go .shadow,
+  .bouncer-stage.go .actor.hitter,
+  .bouncer-stage.go .actor.hittee,
+  .bouncer-stage.go .impact { animation: none; }
 }
 
 /* ---- Mobile: the app fills the screen (app-centered responsive) ---- */
